@@ -22,13 +22,12 @@ const UpdateMovies = props => {
     }, [props.movieList, id]);
 
     const handleChange = e => {
-        e.persist();
-        let value = e.target.value;
-
-        setMovie({
-            ...movie,
-            [e.target.name]: value
-        });
+        if (e.target.name === "stars") {
+            const stars = e.target.value.split(",");
+            setMovie({...movie, [e.target.name]: stars});
+        } else {
+        setMovie({...movie, [e.target.name]: e.target.value})
+      }
     }
 
     const handleSubmit = event => {
@@ -51,7 +50,7 @@ const UpdateMovies = props => {
       <form onSubmit={handleSubmit} className="form">
        
           
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title
             <input 
             className="update-title-input" 
             type="text" name="title" 
@@ -59,9 +58,9 @@ const UpdateMovies = props => {
             value={movie.title} 
             onChange={handleChange}
             />
+            </label>
          
-         
-            <label htmlFor="metascore">Metascore</label>
+            <label htmlFor="metascore">Metascore
             <input 
             className="metascore-input" 
             type="number" 
@@ -70,9 +69,9 @@ const UpdateMovies = props => {
             value={movie.metascore} 
             onChange={handleChange} 
             />
-          
+          </label>
       
-          <label htmlFor="director">Director</label>
+          <label htmlFor="director">Director
           <input 
           className="update-director-input" 
           type="text" name="director" 
@@ -80,8 +79,9 @@ const UpdateMovies = props => {
           value={movie.director} 
           onChange={handleChange} 
           />
-       
-          <label htmlFor="stars">Actors</label>
+         </label>
+
+          <label htmlFor="stars">Actors
           <input 
           className="update-actors-input" 
           type="textfield" 
@@ -90,7 +90,7 @@ const UpdateMovies = props => {
           value={movie.stars} 
           onChange={handleChange} 
           />
-      
+        </label>
         <button className="update-movie-btn" type="submit">Save</button>
       </form>
     </div>

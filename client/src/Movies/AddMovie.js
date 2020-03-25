@@ -30,7 +30,10 @@ const AddMovie = props => {
         }else{
             alert("You have to enter at least one star, homey");
         }
-    }
+    };
+
+    const handleChange = e =>
+    setMovie({ ...movie, [e.target.name]: e.target.value });
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -46,7 +49,53 @@ const AddMovie = props => {
     };
 
     return (
-        
+        <div className="addMovie-form">
+            <h3 className="addMovie-title">Add A Movie</h3>
+
+            <form onSubmit={handleSubmit}>
+
+                <label htmlFor="title">Title:
+                <input
+                    id="title"
+                    name="title"
+                    value={movie.title}
+                    onChange={handleChange}
+                />
+                </label>
+
+                <label htmlFor="title">Director:
+                <input
+                    id="metascore"
+                    name="metascore"
+                    value={movie.metascore}
+                    onChange={handleChange}
+                />
+                </label>
+
+                <label htmlFor="title">director:
+                <input
+                    id="director"
+                    name="director"
+                    value={movie.director}
+                    onChange={handleChange}
+                />
+                </label>
+
+                <label htmlFor="stars">Stars
+                <input 
+                    className="addMovie-actors-input" 
+                    type="textfield" 
+                    name="actors" 
+                    placeholder='actors here, separated by commas' 
+                    value={movie.stars} 
+                    onChange={handleChange} 
+                />
+                </label>
+            <button className="addMovie-btn">Add Movie</button>
+            </form>
+
+
+        </div>
     );
 
 }
