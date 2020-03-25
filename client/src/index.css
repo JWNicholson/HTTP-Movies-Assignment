@@ -59,10 +59,41 @@ body {
   right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
-  background-color: lightseagreen;
+  background-color:lightseagreen;
+  margin-top:48px;
 }
 .save-button:hover {
   background-color: green;
+  color: white;
+}
+
+.update-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: rgb(178, 98, 32);
+  color:white;
+  margin-bottom: 24px;
+}
+.update-button:hover {
+  background-color: rgb(69, 2, 71);
+  color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: darkkhaki;
+  color:white;
+  margin: 124px;
+}
+.delete-button:hover {
+  background-color: rgb(2, 69, 71);
   color: white;
 }
 
