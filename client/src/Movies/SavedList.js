@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 function SavedList({ list }) {
   return (
@@ -17,10 +18,10 @@ function SavedList({ list }) {
         );
       })}
       <div className="home-button">
-        <Link to="/">Home</Link>
+        <Button color="primary"><Link to="/">Home</Link></Button>
       </div>
       <div className="add-a-movie-btn">
-        <Link to="/add-movie">Add A Movie</Link>
+       <Button color="success"><Link to="/add-movie">Add A Movie</Link></Button> 
       </div>
     </div>
   );

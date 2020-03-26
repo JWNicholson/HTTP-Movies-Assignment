@@ -1,5 +1,6 @@
 import React, { useState,  } from "react";
 import axios from "axios";
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const initialMovie = {
   title: "",
@@ -48,42 +49,55 @@ const AddMovie = props => {
   return (
     <div className="update-movie">
       <h2>Add Movie</h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label for="title">Title</Label>
+          <Input
           type="text"
           name="title"
           onChange={changeHandler}
           placeholder="Title"
           value={movie.title}
         />
+        </FormGroup>
+      
 
-        <input
+      <FormGroup>
+      <Label for="director">Director</Label>
+      <Input
           type="text"
           name="director"
           onChange={changeHandler}
           placeholder="Director"
           value={movie.director}
         />
-
-        <input
+      </FormGroup>
+       
+    <FormGroup>
+    <Label for="metascore">Metascore</Label>
+    <Input
           type="number"
           name="metascore"
           onChange={changeHandler}
           placeholder="Metascore"
           value={movie.metascore}
         />
+    </FormGroup>
        
-        <input
+       
+       <FormGroup>
+       <Label for="stars">Stars</Label>
+        <Input
           type="text"
           name="stars"
           onChange={changeHandler}
           placeholder="Stars"
           value={movie.stars}
         />
+      </FormGroup>
 
-
-        <button className="addMovie-the-btn">Add the movie</button>
-      </form>
+        <Button color="info" className="addMovie-the-btn">Add the movie</Button>
+      </Form>
     </div>
   );
 };

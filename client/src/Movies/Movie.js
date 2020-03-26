@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouteMatch } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import { Button, Card } from 'reactstrap';
 
 function Movie(props) {
   const [movie, setMovie] = useState(null);
@@ -43,19 +44,24 @@ function Movie(props) {
   }
 
   return (
+    <>
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
+      </div>
 
-      <div className='save-button' onClick={saveMovie}>
+      <Card body inverse style={{ backgroundColor: '#efefef', borderColor: '#333' }}>
+      <Button color="primary" size="lg" block onClick={saveMovie}>
         Save
-      </div>
-      <div className='update-button' onClick={() => props.history.push(`/update-movie/${movie.id}`)}>
+      </Button>
+      <Button color="secondary" size="lg"  block onClick={() => props.history.push(`/update-movie/${movie.id}`)}>
         Update
-      </div>
-      <div className='delete-button' onClick={delMovie}>
+      </Button>
+      <Button color="danger" size="lg"  block  onClick={delMovie}>
         Delete
-      </div>
-    </div>
+      </Button >
+      </Card>
+
+    </>
   );
 }
 

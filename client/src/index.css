@@ -5,6 +5,10 @@ body {
   background-color: #f2f2f2;
 }
 
+.movie-list{
+  padding:36px;
+}
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -97,19 +101,9 @@ body {
   color: white;
 }
 
-.home-button {
-  padding: 5px 10px;
-  background-color: lightskyblue;
-}
-
-.add-a-movie-btn {
-  padding: 5px 10px;
-  background-color: rgb(3, 158, 81);
-}
-
 .home-button a{
   text-decoration: none;
-  color: rgb(19, 17, 17);
+  color: whitesmoke;
 }
 
 .add-a-movie-btn a {
@@ -120,4 +114,23 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.card-body{
+  width:60%;
+  margin:24px auto;
+  -webkit-box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
+ -moz-box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
+ box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
+}
+
+.update-movie{
+  width:60%;
+  margin: auto;
+  border: 1px solid darkcyan;
+  border-radius:6px;
+  padding:32px;
+  -webkit-box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
+  -moz-box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
+  box-shadow: -8px 3px 14px -8px rgba(73,79,69,1);
 }
