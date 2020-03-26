@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useRouteMatch } from "react-router-dom";
-import MovieCard from "./MovieCard";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useRouteMatch } from 'react-router-dom';
+import MovieCard from './MovieCard';
 
-function Movie({ addToSavedList }) {
-  
+function Movie(props) {
   const [movie, setMovie] = useState(null);
   const match = useRouteMatch();
-  const { id } = useParams();
-  const history = useHistory();
 
   const fetchMovie = id => {
     axios
@@ -19,36 +15,46 @@ function Movie({ addToSavedList }) {
   };
 
   const saveMovie = () => {
-    addToSavedList(movie);
+    props.addToSavedList(movie);
   };
 
+  const delMovie = (e) => {
+   
+      e.preventDefault();
+  
+      axios
+        .delete(`http://localhost:5000/api/movies/${movie.id}`)
+        .then(res => {
+          console.log(res);
+          props.updateMovies(props.movies.filter(movie => movie.id !== res.data));
+          props.history.push("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+  }
+
   useEffect(() => {
- 
-    fetchMovie(id);
-  }, [id]);
+    fetchMovie(match.params.id);
+  }, [match.params.id]);
 
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
 
   return (
-    <div className="save-wrapper">
+    <div className='save-wrapper'>
       <MovieCard movie={movie} />
-      <div
-        className="update-button"
-        onClick={() => history.push(`/update-movie/${id}`)}
-      >
-        Update
-      </div>
-    
 
-      <div className="save-button" onClick={saveMovie}>
+      <div className='save-button' onClick={saveMovie}>
         Save
       </div>
-
-      <div className="delete-button" >
-          Delete
-        </div>
+      <div className='update-button' onClick={() => props.history.push(`/update-movie/${movie.id}`)}>
+        Update
+      </div>
+      <div className='delete-button' onClick={delMovie}>
+        Delete
+      </div>
     </div>
   );
 }

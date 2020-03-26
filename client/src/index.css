@@ -102,6 +102,21 @@ body {
   background-color: lightskyblue;
 }
 
+.add-a-movie-btn {
+  padding: 5px 10px;
+  background-color: rgb(3, 158, 81);
+}
+
+.home-button a{
+  text-decoration: none;
+  color: rgb(19, 17, 17);
+}
+
+.add-a-movie-btn a {
+  color:whitesmoke;
+  text-decoration: none;
+}
+
 .movie-warning {
   color: red;
   text-align: center;
