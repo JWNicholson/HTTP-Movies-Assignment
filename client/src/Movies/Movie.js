@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouteMatch } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import { Button, Card } from 'reactstrap';
 
-function Movie({ addToSavedList }) {
+function Movie(props) {
   const [movie, setMovie] = useState(null);
   const match = useRouteMatch();
 
@@ -15,8 +16,24 @@ function Movie({ addToSavedList }) {
   };
 
   const saveMovie = () => {
-    addToSavedList(movie);
+    props.addToSavedList(movie);
   };
+
+  const delMovie = (e) => {
+   
+      e.preventDefault();
+  
+      axios
+        .delete(`http://localhost:5000/api/movies/${movie.id}`)
+        .then(res => {
+          console.log(res);
+          props.updateMovies(props.movies.filter(movie => movie.id !== res.data));
+          props.history.push("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+  }
 
   useEffect(() => {
     fetchMovie(match.params.id);
@@ -27,13 +44,24 @@ function Movie({ addToSavedList }) {
   }
 
   return (
+    <>
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
-
-      <div className='save-button' onClick={saveMovie}>
-        Save
       </div>
-    </div>
+
+      <Card body inverse style={{ backgroundColor: '#efefef', borderColor: '#333' }}>
+      <Button color="primary" size="lg" block onClick={saveMovie}>
+        Save
+      </Button>
+      <Button color="secondary" size="lg"  block onClick={() => props.history.push(`/update-movie/${movie.id}`)}>
+        Update
+      </Button>
+      <Button color="danger" size="lg"  block  onClick={delMovie}>
+        Delete
+      </Button >
+      </Card>
+
+    </>
   );
 }
 

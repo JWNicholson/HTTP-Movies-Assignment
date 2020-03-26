@@ -1,10 +1,11 @@
 import React from 'react';
+import { Card,  CardTitle, CardText } from 'reactstrap';
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
   return (
-    <div className="movie-card">
-      <h2>{title}</h2>
+    <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+      <CardTitle><h2>{title}</h2></CardTitle>
       <div className="movie-director">
         Director: <em>{director}</em>
       </div>
@@ -18,7 +19,7 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-    </div>
+    </Card>
   );
 };
 
